@@ -7,6 +7,14 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('home', { path: '/' });
+  // this.route('login');
+  
+  this.route('animal', { path: '/hayvanlarim', resetNamespace: true }, function() {
+    this.route('index', { path: '/' });
+    // this.route('new', { path: '/yeni' });
+    // this.route('edit', { path: '/:id/duzenle' });
+  });
 });
 
 export default Router;
