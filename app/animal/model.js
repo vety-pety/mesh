@@ -1,13 +1,11 @@
 import DS from 'ember-data';
 
-// belongsTo
-const { attr, Model } = DS;
+const { attr, belongsTo, Model } = DS;
 
 export default Model.extend({
   indexRoute: 'animal.index',
 
-  // after adding user model uncomment here
-  // user: belongsTo('user'), 
+  user: belongsTo('user'), 
 
   name: attr('string'),
   age: attr('number'),
