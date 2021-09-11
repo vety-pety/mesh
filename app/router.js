@@ -7,7 +7,7 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('home', { path: '/' });
+  this.route('landing-page', { path: '/' });
   // this.route('login');
   
   this.route('animal', { path: '/hayvanlarim', resetNamespace: true }, function() {
