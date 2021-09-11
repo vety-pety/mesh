@@ -1,0 +1,8 @@
+<div class="packs">
+  <h2>Packs</h2>
+
+  {{#each subscriptionPlans as |subscriptionPlan|}}
+    <p>{{subscriptionPlan.description}}</p>
+    <p>{{subscriptionPlan.price}}</p>
+  {{/each}}
+</div>

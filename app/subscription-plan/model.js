@@ -4,6 +4,6 @@ const { attr, Model } = DS;
 
 export default Model.extend({
   description: attr('string'),
-  price: attr('decimal'),
+  price: attr('number'),
   details: attr('string'),
 });
