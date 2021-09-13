@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 
 export default Component.extend({
   store: service(),
-  
+
   propTypes: {
     createUserTask: PropTypes.any.isRequired,
   },
@@ -15,5 +15,5 @@ export default Component.extend({
     this._super(...arguments);
 
     this.set('newUser', this.get('store').createRecord('user'));
-  }
+  },
 });
