@@ -8,7 +8,7 @@ export default Route.extend({
       .findAll('subscription-plan')
       .then(subscriptionPlans => {
         this.set('_subscriptionPlans', subscriptionPlans.toArray());
-    });
+      });
   },
 
   setupController(controller) {

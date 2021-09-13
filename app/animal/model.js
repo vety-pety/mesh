@@ -5,7 +5,7 @@ const { attr, belongsTo, Model } = DS;
 export default Model.extend({
   indexRoute: 'animal.index',
 
-  user: belongsTo('user'), 
+  user: belongsTo('user'),
 
   name: attr('string'),
   age: attr('number'),

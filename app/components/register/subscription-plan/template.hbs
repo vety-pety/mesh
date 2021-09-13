@@ -1,0 +1,12 @@
+<div class="sidebar">
+  <h2>{{selectedSubscriptionPlan.description}}</h2>
+          
+  {{#each selectedSubscriptionPlan.details as |subscriptionPlanDetail|}}
+    <div class="pack_detail">
+      <p>{{subscriptionPlanDetail.type}}</p>
+      <p>({{subscriptionPlanDetail.quantity}} Adet)</p>
+    </div>
+  {{/each}}
+    <h2 class="price">{{selectedSubscriptionPlan.price}}TL / Aylik</h2>
+    <button onclick={{action onContinue}}>NEXT</button> 
+</div>

@@ -1,0 +1,13 @@
+& {
+  .header {
+    text-align: center;
+    margin-top: 3em;
+    .header-items {
+      display: flex;
+      justify-content: center;
+      .current {
+        opacity: 0.3;
+      }
+    }
+  }
+}

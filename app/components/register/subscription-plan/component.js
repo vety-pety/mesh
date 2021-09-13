@@ -3,7 +3,7 @@ import { PropTypes } from 'ember-prop-types';
 
 export default Component.extend({
   propTypes: {
-    subscriptionPlans: PropTypes.array.isRequired,
-    onSubscribe: PropTypes.func.isRequired,
+    selectedSubscriptionPlan: PropTypes.EmberObject.isRequired,
+    onContinue: PropTypes.func.isRequired,
   },
 });

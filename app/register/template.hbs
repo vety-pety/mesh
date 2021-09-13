@@ -1,0 +1,22 @@
+{{title "vety-pety"}}
+
+<div style="display:flex;justify-content:space-around">
+  <div>
+    {{register/current-header currentStep=_currentStep}}
+
+    {{#if (eq _currentStep 0)}}
+      {{register/user-section createUserTask=createUserTask}}
+    {{else if (eq _currentStep 1)}}
+      {{register/pet-section createPetTask=createPetTask}}
+    {{else if (eq _currentStep 2)}}
+      {{register/payment-section makePaymentAndSaveTask=makePaymentAndSaveTask}}
+    {{/if}}
+  </div>
+  {{register/subscription-plan selectedSubscriptionPlan=selectedSubscriptionPlan
+                               onContinue=(action "nextStep")}}
+</div>
+
+
+
+
+

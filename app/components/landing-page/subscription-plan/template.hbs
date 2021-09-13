@@ -1,8 +1,20 @@
 <div class="packs">
-  <h2>Packs</h2>
-
-  {{#each subscriptionPlans as |subscriptionPlan|}}
-    <p>{{subscriptionPlan.description}}</p>
-    <p>{{subscriptionPlan.price}}</p>
-  {{/each}}
+  <h1>Packs</h1>
+  <div class="row">
+    {{#each subscriptionPlans as |subscriptionPlan|}}
+      <div class="column">
+        <div class="card">
+          <h2>{{subscriptionPlan.description}}</h2>
+          <h2 class="price">{{subscriptionPlan.price}}TL / Aylik</h2>
+          {{#each subscriptionPlan.details as |subscriptionPlanDetail|}}
+            <div class="pack_detail">
+              <p>{{subscriptionPlanDetail.type}}</p>
+              <p>({{subscriptionPlanDetail.quantity}} Adet)</p>
+            </div>
+          {{/each}}
+          <button onclick={{action onSubscribe subscriptionPlan.id}}>Subscribe</button> 
+        </div>
+      </div>
+    {{/each}}
+  </div>
 </div>
