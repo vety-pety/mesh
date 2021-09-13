@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { action, computed } from 'ember-decorators/object';
+import { action } from 'ember-decorators/object';
 
 export default Controller.extend({
   i18n: service(),

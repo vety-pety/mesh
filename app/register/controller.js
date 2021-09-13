@@ -2,11 +2,11 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { alias } from '@ember/object/computed';
 import { task } from 'ember-concurrency';
-import { action, computed } from 'ember-decorators/object';
-import { equal } from '@ember/object/computed';
+import { action } from 'ember-decorators/object';
 
 export default Controller.extend({
   i18n: service(),
+  store: service(),
   selectedSubscriptionPlan: alias('model'),
 
   queryParams: {
@@ -14,20 +14,20 @@ export default Controller.extend({
   },
 
   user: null,
-  pet: null,
+  animal: null,
+
+  init() {
+    this._super(...arguments);
+
+    this.set('user', this.get('store').createRecord('user'));
+    this.set('animal', this.get('store').createRecord('animal'));
+  },
 
   _currentStep: 0,
 
-  createUserTask: task(function*(attributes) {
-    // create user here
-  }),
-
-  createPetTask: task(function*(attributes) {
-    // create pet here
-  }),
-
-  makePaymentAndSaveTask: task(function*(attributes) {
-    // create pet here
+  makePaymentAndSaveTask: task(function*() {
+    // we have pets, then save user and the pet with serialized relation.
+    // send to request to payment. After empty payment create user and animal
   }),
 
   @action
