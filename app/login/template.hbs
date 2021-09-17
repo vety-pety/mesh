@@ -1,0 +1,10 @@
+<form >
+  <label for="identification">Login</label>
+  <input id='identification' placeholder="Enter Login" value={{identification}} onchange={{action "updateIdentification"}}>
+  <label for="password">Password</label>
+  <input id='password' placeholder="Enter Password" value={{password}} onchange={{action "updatePassword"}}>
+  <button type="submit" onclick={{action "authenticate"}}>Login</button>
+  {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+  {{/if}}
+</form>

@@ -9,13 +9,17 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('landing-page', { path: '/' });
   this.route('register', { path: '/kayit' });
-  // this.route('login');
+  this.route('login', { path: '/giris' });
 
+  // this.route('authenticated', { path: '' }, function() {
+    
   this.route('animal', { path: '/hayvanlarim', resetNamespace: true }, function() {
     this.route('index', { path: '/' });
     // this.route('new', { path: '/yeni' });
     // this.route('edit', { path: '/:id/duzenle' });
   });
+
+  // });
 });
 
 export default Router;

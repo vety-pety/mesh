@@ -7,6 +7,7 @@ import { action } from 'ember-decorators/object';
 export default Controller.extend({
   i18n: service(),
   store: service(),
+  session: service(),
   selectedSubscriptionPlan: alias('model'),
 
   queryParams: {
@@ -21,6 +22,9 @@ export default Controller.extend({
 
     this.set('user', this.get('store').createRecord('user'));
     this.set('animal', this.get('store').createRecord('animal'));
+    if(this.get('session.isAuthenticated')) {
+      this.incrementProperty('_currentStep');
+    }
   },
 
   _currentStep: 0,
