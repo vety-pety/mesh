@@ -4,7 +4,7 @@ import { action } from 'ember-decorators/object';
 
 export default Controller.extend({
   session: service(),
- 
+
   @action
   invalidateSession() {
     this.get('session.invalidate')();

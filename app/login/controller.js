@@ -13,8 +13,12 @@ export default Controller.extend({
   authenticate(e) {
     e.preventDefault();
     try {
-      this.get('session').authenticate('authenticator:oauth2', this.get('identification'), this.get('password'));
-    } catch(error) {
+      this.get('session').authenticate(
+        'authenticator:oauth2',
+        this.get('identification'),
+        this.get('password')
+      );
+    } catch (error) {
       this.set('errorMessage', error.error || error);
     }
 

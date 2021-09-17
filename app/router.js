@@ -12,7 +12,7 @@ Router.map(function() {
   this.route('login', { path: '/giris' });
 
   // this.route('authenticated', { path: '' }, function() {
-    
+
   this.route('animal', { path: '/hayvanlarim', resetNamespace: true }, function() {
     this.route('index', { path: '/' });
     // this.route('new', { path: '/yeni' });

@@ -11,24 +11,24 @@ export default DS.JSONAPIAdapter.extend({
     return pluralize(underscore(modelName));
   },
 
-  // ajax(_url, _type, _options) {
-  //   const _super = this._super.bind(this);
-  //   let args = arguments;
+  ajax(_url, _type, _options) {
+    const _super = this._super.bind(this);
+    let args = arguments;
 
-  //   const session = this.get('session');
-  //   let tokenExpiresAt = session.get('data.authenticated.expires_at');
-  //   let refreshToken = session.get('data.authenticated.refresh_token');
-  //   let now = new Date().getTime();
+    const session = this.get('session');
+    let tokenExpiresAt = session.get('data.authenticated.expires_at');
+    let refreshToken = session.get('data.authenticated.refresh_token');
+    let now = new Date().getTime();
 
-  //   if (now > tokenExpiresAt) {
-  //     const authenticator = getOwner(this).lookup(session.get('data.authenticated.authenticator'));
-  //     return authenticator._refreshAccessToken(tokenExpiresAt, refreshToken).then(() => {
-  //       return _super(...args);
-  //     });
-  //   } else {
-  //     return _super(...args);
-  //   }
-  // },
+    if (now > tokenExpiresAt) {
+      const authenticator = getOwner(this).lookup(session.get('data.authenticated.authenticator'));
+      return authenticator._refreshAccessToken(tokenExpiresAt, refreshToken).then(() => {
+        return _super(...args);
+      });
+    } else {
+      return _super(...args);
+    }
+  },
 
   // @computed('session.{data.authenticated.access_token,isAuthenticated}')
   // headers() {

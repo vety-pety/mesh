@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { PropTypes } from 'ember-prop-types';
 import { computed, action } from 'ember-decorators/object';
-// import { task } from 'ember-concurrency';
+import { task } from 'ember-concurrency';
 
 export default Component.extend({
   propTypes: {
@@ -11,13 +11,12 @@ export default Component.extend({
     onContinue: PropTypes.func.isRequired,
   },
 
-  @action
-  onContinue() {
+  continueTask: task(function*() {
     if (this.get('currentStep') >= 2) {
-      this.get('makePaymentAndSaveTask').perform();
+      yield this.get('makePaymentAndSaveTask').perform();
     }
-    this.get('onContinue');
-  },
+    this.get('onContinue')();
+  }),
 
   @computed('currentStep')
   getButtonName(currentStep) {

@@ -22,7 +22,7 @@ export default Controller.extend({
 
     this.set('user', this.get('store').createRecord('user'));
     this.set('animal', this.get('store').createRecord('animal'));
-    if(this.get('session.isAuthenticated')) {
+    if (this.get('session.isAuthenticated')) {
       this.incrementProperty('_currentStep');
     }
   },
@@ -30,8 +30,15 @@ export default Controller.extend({
   _currentStep: 0,
 
   makePaymentAndSaveTask: task(function*() {
-    // we have pets, then save user and the pet with serialized relation.
-    // send to request to payment. After empty payment create user and animal
+    yield this.get('selectedSubscriptionPlan').makePayment(
+      this.get('selectedSubscriptionPlan.id'),
+      {
+        user: this.get('user'),
+        animal: this.get('animal'),
+      }
+    );
+
+    this.transitionToRoute('animal.index');
   }),
 
   @action
