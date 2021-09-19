@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { PropTypes } from 'ember-prop-types';
-import { computed, action } from 'ember-decorators/object';
+import { computed } from 'ember-decorators/object';
 import { task } from 'ember-concurrency';
 
 export default Component.extend({

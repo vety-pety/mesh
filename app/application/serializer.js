@@ -1,11 +1,10 @@
 import { underscore } from '@ember/string';
 import DS from 'ember-data';
 import { pluralize } from 'ember-inflector';
-// import serializeRelationship from 'shared-logic/utils/jsonapi/relationship-serializer';
+import serializeRelationship from '../utils/jsonapi/relationship-serializer';
 // import camelizeKeys from 'shared-logic/utils/camelize-keys';
 
 export default DS.JSONAPISerializer.extend({
-  // we may need this later on, think about store cleaner, relationship-serializer, relationship.
   keyForAttribute(attr) {
     return underscore(attr);
   },
@@ -18,15 +17,15 @@ export default DS.JSONAPISerializer.extend({
     return pluralize(underscore(modelName));
   },
 
-  // serializeHasMany() {
-  //   this._super(...arguments);
-  //   serializeRelationship(this, ...arguments);
-  // },
+  serializeHasMany() {
+    this._super(...arguments);
+    serializeRelationship(this, ...arguments);
+  },
 
-  // serializeBelongsTo() {
-  //   this._super(...arguments);
-  //   serializeRelationship(this, ...arguments);
-  // },
+  serializeBelongsTo() {
+    this._super(...arguments);
+    serializeRelationship(this, ...arguments);
+  },
 
   // serializeAttribute(_snapshot, _json, _key, attribute) {
   //   // do not serialize the attribute!
