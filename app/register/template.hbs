@@ -1,5 +1,11 @@
 {{title "vety-pety"}}
 
+{{#if errorList}}
+  {{#each errorList as |error|}}
+    <p>{{error.detail}}</p>
+  {{/each}}
+{{/if}}
+
 <div style="display:flex;justify-content:space-around">
   <div>
     {{register/current-header currentStep=_currentStep}}

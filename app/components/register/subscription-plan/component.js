@@ -14,8 +14,9 @@ export default Component.extend({
   continueTask: task(function*() {
     if (this.get('currentStep') >= 2) {
       yield this.get('makePaymentAndSaveTask').perform();
+    } else {
+      this.get('onContinue')();
     }
-    this.get('onContinue')();
   }),
 
   @computed('currentStep')

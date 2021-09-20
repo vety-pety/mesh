@@ -20,7 +20,7 @@ export default Controller.extend({
   user: null,
   animal: null,
 
-  isUserSaved: false,
+  errorList: [],
 
   init() {
     this._super(...arguments);
@@ -36,6 +36,7 @@ export default Controller.extend({
   _currentStep: 0,
 
   makePaymentAndSaveTask: task(function*() {
+    this.set('errorList', []);
     try {
       let user = this.get('user');
       if (!user.get('id')) {
@@ -62,7 +63,8 @@ export default Controller.extend({
 
       this.transitionToRoute('animal.index');
     } catch (e) {
-      throw e;
+      this.set('_currentStep', 0);
+      this.set('errorList', e.errors);
     }
   }),
 

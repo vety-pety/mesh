@@ -6,8 +6,8 @@ export default Route.extend({
   },
 
   resetController() {
-    this.get('controller.user').destroyRecord();
-    this.set('_currentStep', 0);
+    this.set('controller.errorList', []);
+    this.set('controller._currentStep', 0);
     this.set('controller.selectedSubscriptionPlan', null);
   },
 });
