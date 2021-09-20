@@ -56,7 +56,8 @@ export default Controller.extend({
       }
 
       yield this.get('selectedSubscriptionPlan').makePayment(
-        this.get('selectedSubscriptionPlan.id'), user.get('id')
+        this.get('selectedSubscriptionPlan.id'),
+        user.get('id')
       );
 
       this.transitionToRoute('animal.index');
