@@ -5,7 +5,7 @@ export default Route.extend({
     return this.get('store').find('subscription-plan', params.subscriptionId);
   },
 
-  willTrasition() {
+  resetController() {
     this.get('controller.user').destroyRecord();
     this.set('_currentStep', 0);
     this.set('controller.selectedSubscriptionPlan', null);

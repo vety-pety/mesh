@@ -20,6 +20,8 @@ export default Controller.extend({
   user: null,
   animal: null,
 
+  isUserSaved: false,
+
   init() {
     this._super(...arguments);
 
@@ -35,26 +37,27 @@ export default Controller.extend({
 
   makePaymentAndSaveTask: task(function*() {
     try {
-      yield this.get('selectedSubscriptionPlan').makePayment(
-        this.get('selectedSubscriptionPlan.id')
-      );
-
       let user = this.get('user');
+      if (!user.get('id')) {
+        const storeCleaner = new StoreCleaner(
+          this.get('store'),
+          user,
+          SERIALIZED_RELATIONS.join(',')
+        );
+        const saveOptions = {
+          adapterOptions: {
+            tree: storeCleaner.tree,
+          },
+        };
 
-      const storeCleaner = new StoreCleaner(
-        this.get('store'),
-        user,
-        SERIALIZED_RELATIONS.join(',')
+        yield user.save(saveOptions).then(() => {
+          storeCleaner.clean();
+        });
+      }
+
+      yield this.get('selectedSubscriptionPlan').makePayment(
+        this.get('selectedSubscriptionPlan.id'), user.get('id')
       );
-      const saveOptions = {
-        adapterOptions: {
-          tree: storeCleaner.tree,
-        },
-      };
-
-      user.save(saveOptions).then(() => {
-        storeCleaner.clean();
-      });
 
       this.transitionToRoute('animal.index');
     } catch (e) {
